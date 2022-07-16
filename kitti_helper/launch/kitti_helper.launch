@@ -1,0 +1,16 @@
+<launch>
+    <arg name="sequence" default="0"/>
+    <node name="kitti_helper_node" type="kitti_helper_node" pkg="kitti_helper" output="screen">
+        <param name="dataset_folder" type="string" value="/media/kinggreat24/Samsung_T5/data/kitti_data_full/odometry/unzip/data/dataset"/>
+        <param name="sequence_number" type="int" value="$(arg sequence)"/>
+        <param name="publish_delay" type="int" value="5"/>
+
+        <remap from="/velodyne_points" to="/sensor/velodyne/cloud_euclidean"/>
+        <remap from="/image_left" to="/sensor/camera/color/left/image_rect"/>
+        <remap from="/image_semantic" to="/sensor/camera/color_labels/left/image_rect"/>
+        <remap from="/image_left_camera_info" to="/sensor/camera/grayscale/left/camera_info"/>
+    </node>
+
+    <node pkg="tf" type="static_transform_publisher" name="broadcaster_2" args="0 0 0 0 0 0 1 local_cs sensor/camera 100" />
+    <node pkg="tf" type="static_transform_publisher" name="broadcaster_1" args="0 0 0 0 0 0 1 sensor/camer sensor/camera/grayscale/left 100" />
+</launch>
