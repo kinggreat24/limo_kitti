@@ -64,7 +64,7 @@ catkin_make -j4
 
   The **kitti_helper.cpp** will read raw data from files and publish it via rostopic.
 
-  ![]( /home/kinggreat24/limo_slam_ws/src/rviz_screenshot_2022_07_16-23_35_27.png)
+  ![]( ./rviz_screenshot_2022_07_16-23_35_27.png)
 
   
 
